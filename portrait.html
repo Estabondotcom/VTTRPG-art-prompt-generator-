@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portrait Prompt Generator</title>
+  <style>
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Merriweather', serif;
+}
+
+input, select, textarea {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #444;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #663399;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+button:hover {
+  background-color: #854ec4;
+}
+</style>
+</head>
+<body>
+<h1 style='text-align:center;'>TTRPG Portrait Prompt Generator</h1>
+
+<div class="prompt-section">
+  <h2>Fantasy Portrait Prompt Generator (3/4 View)</h2>
+  <form id="portraitPromptForm">
+    <label for="raceGender">Character Race & Gender:</label>
+    <input type="text" id="raceGender" placeholder="e.g., Female half-elf, Non-binary tiefling">
+
+    <label for="archetype">Class or Archetype:</label>
+    <input type="text" id="archetype" placeholder="e.g., Arcane scholar, forest knight">
+
+    <label for="armor">Armor / Clothing Description:</label>
+    <input type="text" id="armor" placeholder="e.g., Enchanted robes with glowing runes">
+
+    <label for="weapon">Weapon or Item Held:</label>
+    <input type="text" id="weapon" placeholder="e.g., Crystal staff, ornate longsword">
+
+    <label for="features">Hair & Features:</label>
+    <input type="text" id="features" placeholder="e.g., Long white hair, glowing eyes, elven ears">
+
+    <label for="background">Background Setting:</label>
+    <input type="text" id="background" placeholder="e.g., Arcane library, enchanted forest">
+
+    <label for="mood">Mood / Expression:</label>
+    <input type="text" id="mood" placeholder="e.g., Calm and resolute, mysterious and intense">
+
+    <label for="extras">Additional Details:</label>
+    <input type="text" id="extras" placeholder="e.g., Floating spell runes, drifting leaves">
+
+    <button type="button" onclick="generatePortraitPrompt()">Generate Prompt</button>
+  </form>
+
+  <h3>Generated Prompt:</h3>
+  <textarea id="portraitPromptOutput" rows="6" readonly></textarea>
+</div>
+
+<script>
+  function generatePortraitPrompt() {
+    const raceGender = document.getElementById("raceGender").value;
+    const archetype = document.getElementById("archetype").value;
+    const armor = document.getElementById("armor").value;
+    const weapon = document.getElementById("weapon").value;
+    const features = document.getElementById("features").value;
+    const background = document.getElementById("background").value;
+    const mood = document.getElementById("mood").value;
+    const extras = document.getElementById("extras").value;
+
+    const prompt = `Create a high-fantasy 3/4 view character portrait in a semi-realistic digital painting style with smooth brushwork and dramatic lighting. The subject is a ${raceGender} ${archetype}, wearing ${armor}, and holding ${weapon}. They have ${features}. The background is ${background}. Their expression is ${mood}. ${extras ? extras + '.' : ''}`;
+
+    document.getElementById("portraitPromptOutput").value = prompt;
+  }
+</script>
+
+
+<div style="text-align:center; margin-top: 40px;">
+  <a href="index.html" style="background-color: #444; color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: bold;">
+    ← Back to Home
+  </a>
+</div>
+
+</body>
+</html>
