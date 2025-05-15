@@ -83,7 +83,8 @@ button:hover {
     const mood = document.getElementById("mood").value;
     const extras = document.getElementById("extras").value;
 
-    const prompt = `Create a high-fantasy 3/4 view character portrait in a semi-realistic digital painting style with smooth brushwork and dramatic lighting. The subject is a ${raceGender} ${archetype}, wearing ${armor}, and holding ${weapon}. They have ${features}. The background is ${background}. Their expression is ${mood}. ${extras ? extras + '.' : ''}`;
+    const prompt = `Enhance this prompt and then create an image based off the enhanced prompt.
+    Create a high-fantasy 3/4 view character portrait in a semi-realistic digital painting style with smooth brushwork and dramatic lighting. The subject is a ${raceGender} ${archetype}, wearing ${armor}, and holding ${weapon}. They have ${features}. The background is ${background}. Their expression is ${mood}. ${extras ? extras + '.' : ''}`;
 
     document.getElementById("portraitPromptOutput").value = prompt;
   }
