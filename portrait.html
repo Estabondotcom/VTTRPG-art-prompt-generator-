@@ -173,6 +173,7 @@ function copyPortraitPrompt() {
 </script>
 
 
+
 <script>
 function randomPortrait() {
   const genders = ["Male", "Female", "Non-binary"];
@@ -184,14 +185,14 @@ function randomPortrait() {
   document.getElementById("archetype").value = classes[Math.floor(Math.random() * classes.length)];
 
   document.getElementById("hair").value = "Hair style appropriate to race and class.";
-  document.getElementById("eyes").value = "Random eye color appropriate to race and class.";
-  document.getElementById("mood").value = "Random mood appropriate to class and race.";
-  document.getElementById("features").value = "Random features appropriate to class and race.";
-  document.getElementById("armor").value = "Random clothes or armor appropriate to race and class.";
-  document.getElementById("weapon").value = "Weapons and equipment appropriate to class and race.";
+  document.getElementById("eyes").value = "Eye color appropriate to race and class.";
+  document.getElementById("mood").value = "Mood or demeanor fitting their race and class.";
+  document.getElementById("features").value = "Distinct features appropriate to race and class.";
+  document.getElementById("armor").value = "Outfit or armor appropriate to race and class.";
+  document.getElementById("weapon").value = "Gear or weapon appropriate to class and race.";
 
-  const backgrounds = ["Ancient forest", "Arcane laboratory", "Temple ruins", "Royal throne room", "Foggy graveyard", "Bustling city alley", "Floating sky island"];
-  const extras = ["Floating spell runes", "Drifting leaves", "Glowing crystals", "Arcane symbols", "Magical aura", "Battle scars"];
+  const backgrounds = ["Enchanted glade", "Royal throne room", "Ancient ruins", "Arcane sanctum", "Foggy battlefield", "Skybound citadel", "Twilight forest"];
+  const extras = ["Glowing runes", "Floating feathers", "Arcane halo", "Trail of mist", "Magical aura", "Embroidered sigils"];
 
   document.getElementById("background").value = backgrounds[Math.floor(Math.random() * backgrounds.length)];
   document.getElementById("extras").value = extras[Math.floor(Math.random() * extras.length)];
@@ -199,6 +200,7 @@ function randomPortrait() {
   generatePortraitPrompt();
 }
 </script>
+
 
 </body>
 </html>
