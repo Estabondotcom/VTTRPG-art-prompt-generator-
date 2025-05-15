@@ -34,18 +34,68 @@ button:hover {
   background-color: #854ec4;
 }
 </style>
+
+<style>
+  label, input {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+  }
+  input {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #1e1e1e;
+    color: #eee;
+    margin-bottom: 10px;
+  }
+  textarea {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #1e1e1e;
+    color: #eee;
+    border: 1px solid #444;
+    border-radius: 4px;
+  }
+</style>
+
 </head>
+
 <body>
+<div class="container">
+  <header style="text-align: center; padding: 20px;">
+    <h1 style="margin: 0; font-size: 2em; color: #ffcc00;">TTRPG Portrait Prompt Generator</h1>
+    <p style="color: #aaa;">Create character portrait prompts for your fantasy games</p>
+  </header>
+
 <h1 style='text-align:center;'>TTRPG Portrait Prompt Generator</h1>
 
-<div class="prompt-section">
+<div class="prompt-section" style="max-width: 700px; margin: 0 auto; padding: 20px;">
   <h2>Fantasy Portrait Prompt Generator (3/4 View)</h2>
   <form id="portraitPromptForm">
-    <label for="raceGender">Character Race & Gender:</label>
-    <input type="text" id="raceGender" placeholder="e.g., Female half-elf, Non-binary tiefling">
+    <label for="characterGender">Character Gender:</label>
+    <input type="text" id="characterGender" placeholder="e.g., Female, Non-binary">
+
+    <label for="characterRace">Character Race:</label>
+    <input type="text" id="characterRace" placeholder="e.g., Half-elf, Tiefling">
 
     <label for="archetype">Class or Archetype:</label>
     <input type="text" id="archetype" placeholder="e.g., Arcane scholar, forest knight">
+
+    <label for="hair">Hair Description:</label>
+    <input type="text" id="hair" placeholder="e.g., Long white hair">
+
+    <label for="eyes">Eye Description:</label>
+    <input type="text" id="eyes" placeholder="e.g., Glowing amber eyes">
+
+    <label for="mood">Mood / Expression:</label>
+    <input type="text" id="mood" placeholder="e.g., Calm and resolute, mysterious and intense">
+
+    <label for="features">Other Features:</label>
+    <input type="text" id="features" placeholder="e.g., Elven ears, facial tattoos">
+
+    
 
     <label for="armor">Armor / Clothing Description:</label>
     <input type="text" id="armor" placeholder="e.g., Enchanted robes with glowing runes">
@@ -53,14 +103,12 @@ button:hover {
     <label for="weapon">Weapon or Item Held:</label>
     <input type="text" id="weapon" placeholder="e.g., Crystal staff, ornate longsword">
 
-    <label for="features">Hair & Features:</label>
-    <input type="text" id="features" placeholder="e.g., Long white hair, glowing eyes, elven ears">
+    
 
     <label for="background">Background Setting:</label>
     <input type="text" id="background" placeholder="e.g., Arcane library, enchanted forest">
 
-    <label for="mood">Mood / Expression:</label>
-    <input type="text" id="mood" placeholder="e.g., Calm and resolute, mysterious and intense">
+    
 
     <label for="extras">Additional Details:</label>
     <input type="text" id="extras" placeholder="e.g., Floating spell runes, drifting leaves">
@@ -70,21 +118,29 @@ button:hover {
 
   <h3>Generated Prompt:</h3>
   <textarea id="portraitPromptOutput" rows="6" readonly></textarea>
+
+<div style="text-align:center; margin-top: 12px;">
+  <button onclick="copyPortraitPrompt()" style="background-color: #444; color: white; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer;">Copy to Clipboard</button>
+  <div id="copyPopup" style="display:none; margin-top:10px; color:#0f0;">Copied!</div>
+</div>
+
 </div>
 
 <script>
   function generatePortraitPrompt() {
-    const raceGender = document.getElementById("raceGender").value;
+    const gender = document.getElementById("characterGender").value;
+  const race = document.getElementById("characterRace").value;
     const archetype = document.getElementById("archetype").value;
     const armor = document.getElementById("armor").value;
     const weapon = document.getElementById("weapon").value;
-    const features = document.getElementById("features").value;
+    const hair = document.getElementById("hair").value;
+  const eyes = document.getElementById("eyes").value;
+  const features = document.getElementById("features").value;
     const background = document.getElementById("background").value;
     const mood = document.getElementById("mood").value;
     const extras = document.getElementById("extras").value;
 
-    const prompt = `Enhance this prompt and then create an image based off the enhanced prompt.
-    Create a high-fantasy 3/4 view character portrait in a semi-realistic digital painting style with smooth brushwork and dramatic lighting. The subject is a ${raceGender} ${archetype}, wearing ${armor}, and holding ${weapon}. They have ${features}. The background is ${background}. Their expression is ${mood}. ${extras ? extras + '.' : ''}`;
+    const prompt = `Create a high-fantasy 3/4 view character portrait in a semi-realistic digital painting style with smooth brushwork and dramatic lighting. The subject is a ${gender} ${race} ${archetype}, wearing ${armor}, and holding ${weapon}. They have ${hair}, ${eyes}, and ${features}. The background is ${background}. Their expression is ${mood}. ${extras ? extras + '.' : ''}`;
 
     document.getElementById("portraitPromptOutput").value = prompt;
   }
@@ -96,6 +152,23 @@ button:hover {
     ← Back to Home
   </a>
 </div>
+
+</div>
+
+<script>
+function copyPortraitPrompt() {
+  const output = document.getElementById("portraitPromptOutput");
+  output.select();
+  output.setSelectionRange(0, 99999); // For mobile compatibility
+  document.execCommand("copy");
+
+  const popup = document.getElementById("copyPopup");
+  popup.style.display = "block";
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 1500);
+}
+</script>
 
 </body>
 </html>
